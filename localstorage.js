@@ -31,14 +31,18 @@ alert("not logged in")
 }
 */
 
-function saveData() 
+
+
+function localStorage() 
 {
-  let name,pass,lname;
-  name=document.getElementById("name").value;
+  let uname,pass,lname,phone;
+  uname=document.getElementById("uname").value;
   pass=document.getElementById("pass").value;
   lname=document.getElementById("lname").value;
-  
-  localStorage.setItem("uname",name)
+  phone=document.getElementById("phone").value;
+
+  localStorage.setItem("uname",uname)
   localStorage.setItem("pass",pass)
   localStorage.setItem("lname",lname)  
+  localStorage.setItem("phone",phone) 
 }

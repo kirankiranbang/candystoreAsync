@@ -1,55 +1,29 @@
+console.log("page is ready");
+var take_input=document.getElementById("take_input");
+var save_value=document.getElementById("save_value");
 
-//var itemList=document.querySelector('#items');
+var localstorage_value=document.getElementById("localstorage_value")
+var read_localstorage=document.getElementById("read_localstorage")
+var delete_loalstorage=document.getElementById("delete_data")
+var     edit_localstorage= document.getElementById("edit_localstorage")
 
-//itemList.parentNode.style.backgroundColor='red';
-//console.log(itemList.parentNode.parentNode.parentNode);
+save_value.onclick=function()
+{
+  localStorage.setItem("name",  JSON.stringify(take_input.value));           //name=kir
+}
 
-   //firstElementChild
-// var itemList=document.querySelector('#items');
-// itemList.children[1].style.backgroundColor='yellow';
+read_localstorage.onclick=function()
+{
+  localstorage_value.textContent=localStorage.getItem("name");
+}
 
-  //add hello before ITEM1
-// var itemList=document.querySelector('#items');
-// itemList.firstElementChild.textContent='hello';
+delete_loalstorage.onclick=function()
+{
+  localStorage.removeItem("name")
+}
 
+edit_localstorage.onclick=function()
+{
+  localStorage.getItem("name.value")
+}
 
-
-// var itemList=document.querySelector('#items');
-// console.log(itemList.previousSibling);
-// console.log(itemList.previousElementSibling);
-// itemList.previousElementSiblingstyle.color='yellow';
-
-
-
-
-
-
-const element = document.getElementById("header-title");
-element.innerHTML = "HEELO WORLD";
-//addclass
-var newDiv=document.querySelector('div');
-newDiv.className="hello";
-
-//addid
-newDiv.id="HellO";
-
-//add atribute
-newDiv.setAttribute('title','hello div');
-
-//crate textnode
-
-var newDivText=document.createTextNode('Item Lister');
-
-
-//addtext text div
-
-newDiv.appendChild(newDivText);
-
-
-
-
-var container=document.querySelector('header.container')
-
-var title=document.querySelector('header title');
-
-container.insertBefore(newDiv,title);

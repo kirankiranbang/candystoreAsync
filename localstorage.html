@@ -14,36 +14,42 @@
     
   
   <div class="parent">
-    <form >
+    <form     onclick="SaveDataToLocalStorage(event)"  autocomplete="on">
       
     
       
-      
+   <div class="input-box">
+    
+   
   <label> Firstname:</label>  <br>        
-    <input type="text" id="name"   maxlength="5" size="15"> <br> <br>  
+    <input type="text" id="name"   maxlength="5" size="15"> <br> <br> 
+  </div>  
+  <div class="input-box">
+    
+  
     <label> password: </label>   <br>  
-    <input type="password" id="pass"  maxlength="5"   size="15"/> <br> <br>  
+    <input type="password" id="pass"  maxlength="5"   size="15"/> <br> <br> 
+  </div> 
+  
+  <div class="input-box">
+    
+  
     <label> Lastname: </label> <br>      
     <input type="text" id="lname" maxlength="5" size="15"/> <br> <br>  
+  </div>   
+<button type="Submit >submit</button>
 
-<button type="Submit" onclick="saveData()" >submit</button>
 
-
-<script>
+script>
   
  
-function saveData() 
-{
-  let name,pass,lname;
-  name=document.getElementById("name").value;
-  pass=document.getElementById("pass").value;
-  lname=document.getElementById("lname").value;
+
+
+
   
-  localStorage.setItem("uname",name)
-  localStorage.setItem("pass",pass)
-  localStorage.setItem("lname",lname)  
-}
+
 </script>
+
 
 </form>  
 </div>

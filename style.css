@@ -3,11 +3,11 @@
     display:flex;
     
     justify-content:center;
-    height: 40vh;
+    height: 100vh;
     width: 50%;
    top: 900%;
    left: 20%;
-
+background: transparent;
  background-color: brown;
   }
 
@@ -15,4 +15,22 @@
   {height: 150vh;
     background-color: gold;
     display: flex;
+  }
+
+  .alert {
+    padding: 20px;
+    background-color: #f44336;
+    color: white;
+    opacity: 1;
+    transition: opacity 0.6s;
+    margin-bottom: 15px;
+  }
+
+  .input-box input
+  {
+    width: 100;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
   }
