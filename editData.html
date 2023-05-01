@@ -18,7 +18,17 @@
     <input type="email" name="emailId" id="emailid" required/>
     <label>Phone Number</label>
     <input type="tel" name="phonenumber" id="phonenumberid"/>
-    <button>Submit</button>
+
+    <input type="number" id="range" name="rangedata" min="1" max="100" value="1">
+
+    <label>choosecatagory</label>
+    <select name="catagory" id="option">
+        <option id="none" value="">-- Select Country --</option>
+        <option>movie ticket open</option>
+        <option>movie ticket full</option>
+    </select>
+
+    <button>Addexpenses</button>
  </form>
 
 
@@ -29,13 +39,16 @@
 function saveToLocalStorage(event)
 {
 event.preventDefault();
-const name= event.target.username.value;
+const name= event.target.username.value;                  /name="username"/
 const email = event.target.emailId.value;
 const phonenumber = event.target.phonenumber.value;
+const rangedata= event.target.rangedata.value;
+const catagory = event.target.catagory.value;
 
-const obj ={name,email,phonenumber};
 
-localStorage.setItem(obj.email,JSON.stringify(obj));
+const obj ={name,email,phonenumber,rangedata,catagory};
+
+localStorage.setItem(obj.email,JSON.stringify(obj));      /key is storing emails in inspect session/
 showuseronscreen(obj);
 
 
@@ -45,38 +58,32 @@ showuseronscreen(obj);
 function showuseronscreen(obj)
 {
     let parent=document.getElementById('listofitems');
-    let li = document.createElement('li');
-    li.textContent=obj.name+'-'+obj.email+'-'+obj.phonenumber;
+    let li = document.createElement('li');                            /li  (list items)->to reflect on screen and exchange objects here while printing on screen  /
+    li.textContent=obj.name+'-'+obj.email+'-'+obj.phonenumber+'-'+obj.rangedata+'-'+obj.catagory;
 
 
-
-
-
-var edit=document.createElement('button');
+    var edit=document.createElement('button');
     edit.value='Edit';
 
 
-
-
-
-
-    var input=document.createElement('input');
+   var input=document.createElement('input');
     input.setAttribute('type','button');        //////input.type=button
-    input.setAttribute('value','delete');                ////input.value=delete
+    input.setAttribute('value','deleteExpenses');                ////input.value=delete
     input.setAttribute('data-email', obj.email);
-    input.addEventListener('click', ()=>{ ////  input.onclick=()=>
+    input.addEventListener('click', ()=>
+    { ////  input.onclick=()=>
 
         parent.removeChild(li);
         localStorage.removeItem(obj.email);
 
-
-
     });
 
+   /creating edit button/
 
     var inputEdit=document.createElement('input');
     inputEdit.type='button'      //////input.type=button
-    inputEdit.value='Edit'
+    inputEdit.value='EditExpenses'
+
   inputEdit.onclick=() =>{
 
      parent.removeChild(li);
@@ -84,20 +91,17 @@ var edit=document.createElement('button');
        document.getElementById('usernameid').value=obj.name;
        document.getElementById('emailid').value=obj.email;
        document.getElementById('phonenumberid').value=obj.phonenumber;
-
-
+       document.getElementById('range').value=obj.rangedata;
+       document.getElementById('option').value=obj.catagory;
+       
 
 
 
   }
 
-
-
-
-
-    li.appendChild(input);
-    li.appendChild(inputEdit)
-    parent.appendChild(li);
+ li.appendChild(input);
+ li.appendChild(inputEdit)
+ parent.appendChild(li);
 
 
 }
