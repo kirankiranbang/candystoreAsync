@@ -1,0 +1,35 @@
+.section{
+    margin:auto;
+    display:flex;
+    
+    justify-content:center;
+    height: 070%;
+    width: 50%;
+   top: 30%;
+   left: 20%;
+background: transparent;
+ background-color: brown;
+ align-items: center;
+ 
+
+}
+.grand{
+    background-color: blue;
+    width: 90%;
+    height: 100%;
+    display: flex;
+}
+
+
+body{
+padding: 0%;
+margin: 0%;
+align-items: center;
+justify-content: center;
+background-color: blue;
+
+}
+.slider
+{
+    width: :800px;
+}
