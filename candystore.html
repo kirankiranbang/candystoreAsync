@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Candy Store</title>
+	<style>
+		form {
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+		}
+
+		label {
+			margin-right: 5px;
+		}
+	</style>
+</head>
+<body>
+	<h1>Candy Store</h1>
+	
+	<form>
+        
+		<label for="candy-name">Candy Name:</label>
+		<select id="candy-name">
+			<option value="snickers">Snickers</option>
+			<option value="twix">Twix</option>
+			<option value="mms">M&amp;Ms</option>
+			<option value="kitkat">KitKat</option>
+		</select>
+
+		<label for="candy-description">Candy Description:</label>
+		<select id="candy-description">
+			<option value="chocolate">Chocolate</option>
+			<option value="caramel">Caramel</option>
+			<option value="peanut-butter">Peanut Butter</option>
+			<option value="cookies-and-cream">Cookies &amp; Cream</option>
+		</select>
+
+
+		<label for="candy-price">Candy Price:</label>
+		<select id="candy-price">
+			<option value="1.99">$1.99</option>
+			<option value="2.99">$2.99</option>
+			<option value="3.99">$3.99</option>
+			<option value="4.99">$4.99</option>
+		</select>
+
+		<label for="candy-quantity">Candy Quantity:</label>
+		<span id="candy-quantity">100</span>
+
+		<button type="button" onclick="addItem()">Add Item</button>
+
+		<button type="button" onclick="buyOne()">Buy 1</button>
+
+		<button type="button" onclick="buyTwo()">Buy 2</button>
+
+        <button type="button" onclick="resetQuantity()">Reset</button>
+	</form>
+
+	<div id="item-details"></div>
+
+	<script>
+        var items = JSON.parse(localStorage.getItem("items")) || []; //>page got reshed data should not erasedusing parse and multiple data display on window using array[]/ load items from local storage or initialize as an empty array//
+        var candyQuantity = document.getElementById("candy-quantity");
+        candyQuantity.innerHTML = localStorage.getItem("candyQuantity") || 100; // load candy quantity from local storage or initialize as 100
+        
+        function addItem() {
+            var candyName = document.getElementById("candy-name").value;
+            var candyDescription = document.getElementById("candy-description").value;
+            var candyPrice = document.getElementById("candy-price").value;
+            var candyQuantity = document.getElementById("candy-quantity").innerHTML;
+        
+            var newItem = {
+                name: candyName,
+                description: candyDescription,
+                price: candyPrice,
+                quantity: candyQuantity
+            };
+        
+            items.push(newItem); // add the new item to the array of items
+        
+            localStorage.setItem("items", JSON.stringify(items)); // store items in local storage
+            displayItems(); // display all the items in the HTML
+        }
+        
+        function displayItems() {
+            var itemDetails = "<table><tr><th>Name</th><th>Description</th><th>Price</th><th>Quantity</th><th>Edit</th><th>Delete</th></tr>";
+                for (var i = 0; i < items.length; i++) {
+                    var item = items[i];
+                    itemDetails += "<tr><td>" + item.name + "</td>"
+                        + "<td>" + item.description + "</td>"
+                        + "<td>" + item.price + "</td>"
+                        + "<td>" + item.quantity + "</td>"
+                        + "<td> <button onclick='editItem(" + i + ")'>edit</button> </td>"
+                        + "<td> <button onclick='deleteItem(" + i + ")'>X</button>   </td></tr>";
+                }
+            itemDetails += "</table>";
+        
+            document.getElementById("item-details").innerHTML = itemDetails;
+        }
+        
+        function deleteItem(index) {
+            items.splice(index, 1);
+            displayItems();
+        }
+        
+        function editItem(index) {
+            var item = items[index];
+            var newName = prompt("Enter the new name for " + item.name);
+            var newDesc = prompt("Enter the new description for " + item.description);
+            var newPrice = prompt("Enter the new price for " + item.price);
+            var newQty = prompt("Enter the new quantity for " + item.quantity);
+            items[index] = {
+                name: newName,
+                description: newDesc,
+                price: newPrice,
+                quantity: newQty
+            };
+            displayItems();
+        }
+
+
+
+
+
+
+
+
+        function updateQuantityDisplay(quantity) {
+            var candyQuantity = document.getElementById("candy-quantity");
+            candyQuantity.innerHTML = quantity;
+            localStorage.setItem("candyQuantity", quantity); // store quantity in local storage
+        }
+        
+        function loadQuantityFromStorage() {
+            var quantity = localStorage.getItem("candyQuantity");
+            if (quantity) {
+                updateQuantityDisplay(quantity);
+            }
+        }
+        
+        function resetQuantity() {
+            updateQuantityDisplay(100);
+        }
+        
+        function buyOne() {
+            var candyQuantity = document.getElementById("candy-quantity");
+            var quantity = parseInt(candyQuantity.innerHTML);
+        
+            if (quantity >= 1) {
+                quantity -= 1;
+                updateQuantityDisplay(quantity);
+            }
+        }
+        
+        function buyTwo() {
+            var candyQuantity = document.getElementById("candy-quantity");
+            var quantity = parseInt(candyQuantity.innerHTML);
+        
+            if (quantity >= 2) {
+                quantity -= 2;
+                updateQuantityDisplay(quantity);
+            }
+        }
+        
+        // Call loadQuantityFromStorage on page load to initialize the quantity display from localStorage
+        loadQuantityFromStorage();
+        
+        // Call displayItems on page load to display items from localStorage
+        displayItems();
+	</script>
+</body>
+</html>
