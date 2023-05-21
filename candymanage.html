@@ -1,0 +1,126 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input{
+            color:blue;
+        }
+
+    </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+    
+
+
+
+
+
+<body  class="bg-alert">
+    <div class="container">
+    <form action="" onsubmit="saveToLocalStorage(event)" style="text-align:center">
+        <label for="" class="form-label" style="color:blue"><b>Candy Management</b></label><br>
+        <br><br>
+
+        
+
+  
+		<label for="name" class="form-label">Candy Name</label>
+		<select type="text" class="form-control" id="name" name="name" required>
+            <option value="">--Please choose an option--
+			<option value="snickers">Snickers</option>
+			<option value="twix">Twix</option>
+			<option value="alphabet">M&amp;Ms</option>
+			<option value="kitkat">KitKat</option>
+		</select>
+
+
+
+
+<!-- 
+
+        <label for="name" class="form-label">Candy Name</label><br>
+        <input type="text" class="form-control" id="name" name="name" required><br>
+         -->
+
+
+         <label for="candy-description">Description:</label>
+         <select type="text" class="form-control" id="desc" name="desc">
+            <option value="">--Please choose an option--
+             <option value="chocolate">Chocolate</option>
+             <option value="caramel">Caramel</option>
+             <option value="peanut-butter">Peanut Butter</option>
+             <option value="cookies-and-cream">Cookies &amp; Cream</option>
+         </select>
+
+
+
+
+
+
+<!-- 
+        <label class="form-label">Description</label><br>
+        <input type="text" class="form-control" id="desc" name="desc"><br> -->
+
+
+
+
+
+		<label class="form-label"> Price:</label>
+		<select type="text" class="form-control" id="price" name="price">
+            <option value="">--Please choose an option--
+			<option value="1.99">$1.99</option>
+			<option value="2.99">$2.99</option>
+			<option value="3.99">$3.99</option>
+			<option value="4.99">$4.99</option>
+		</select>
+
+
+
+
+<!--- 
+        <label class="form-label">Price</label><br>
+        <input type="text" class="form-control" id="price" name="price"><br> -->
+        
+
+
+
+
+
+
+
+
+ 
+        <label class="form-label">Quantity</label><br>
+        <select type="text" class="form-control" id="quantity" name="quantity">
+			<option value="100">100</option>
+            <option value="200">200</option>
+			
+		</select>
+
+
+
+
+
+
+       
+        
+        <input type="submit" style="background-color:orange;" value="Add Item">
+    </form>
+  </div>
+    <ul id="items">
+    </ul>
+    <script defer src ="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js"></script>
+    <script src="candymanagement.js">
+
+
+
+    </script>
+    </body>
+</html>
